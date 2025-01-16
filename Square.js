@@ -1,30 +1,22 @@
-class Square{
-    x;
-    y;
-    d;
-    vx;
-    vy;
+class Square extends Shape{
+ 
     constructor(x,y,d){
-      this.x = x;
-      this.y = y;
-      this.d = d;
-      this.vx = random(-20, 20)
-      this.vy = random(-20, 20)
+        super(x,y,d);
+      this.rotation = 10;
       rectMode(CENTER);
+      angleMode(DEGREES);
       
     }
     update(){
-        this.x += this.vx;
-        this.y += this.vy;
-        let r = this.d/2;
-        if(this.x < 0 + r || this.x > width - r){
-            this.vx = -this.vx; 
-        }
-        if(this.y < 0 + r || this.y > height - r){
-            this.vy = -this.vy; 
-        }
+
+        super.update()
+        this.rotation+=5;
     }
     draw(){
-        square(this.x, this.y, this.d)
+        push()
+        translate(this.x, this.y)
+        rotate(this.rotation)
+        square(0, 0, this.d)
+        pop()
     }
 }
